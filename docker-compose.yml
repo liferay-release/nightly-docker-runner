@@ -1,0 +1,17 @@
+services:
+  liferay:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    ports:
+      - "8080:8080"
+
+  database:
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: lportal
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
