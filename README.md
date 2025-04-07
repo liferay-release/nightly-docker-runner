@@ -5,7 +5,7 @@ Next, add or copy the `*.config` files to the folder `configs`, like `com.lifera
 ## How to run the nightly build with the default database (Hypersonic)
 
 1. `docker build -t nightly .`
-2. `docker run nightly --name liferay-nightly --publish 8080:8080`
+2. `docker run --name liferay-nightly --publish 8080:8080 nightly`
 
 ## How to run the nightly build with a MySQL database
  
