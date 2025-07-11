@@ -11,3 +11,10 @@ Next, add or copy the `*.config` files to the folder `configs`, like `com.lifera
  
 1. Open the file `properties/portal-ext.properties` and remove all `#` to enable the MySQL configuration.
 2. Open the terminal and run the command `docker-compose up`.
+
+## How to deploy changes in configs or portal-ext.properties after run nightly for the first time
+
+1. In your terminal, hit `Ctrl + C` to stop nightly.
+2. Place the necessary configurations in `configs` and update the content of `properties/portal-ext.properties`.
+3. Back to the terminal, run the command `docker-compose build`
+4. Next, run the command `docker-compose up`
