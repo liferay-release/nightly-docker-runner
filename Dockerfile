@@ -1,4 +1,4 @@
-FROM liferay/release-candidates:testathon-2026.q1-round1
+FROM liferay/release-candidates:testathon-2026.q1-phase-1
 
 # Copy all config files placed on the folder configs/ to the Liferay Portal
 # bundle.
