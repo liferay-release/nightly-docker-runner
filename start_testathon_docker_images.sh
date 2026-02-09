@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo ""
+echo -e "[ INFO ] Cleaning up Testathon containers and network..."
+
 docker stop testathon-database &> /dev/null
 docker stop testathon-liferay &> /dev/null
 
@@ -8,7 +11,13 @@ docker rm testathon-liferay &> /dev/null
 
 docker network rm testathon-network &> /dev/null
 
+echo ""
+echo -e "[ INFO ] Creating Testathon network..."
+
 docker network create testathon-network
+
+echo ""
+echo -e "[ INFO ] Creating MySQL database container..."
 
 docker run -d \
 	--name testathon-database \
@@ -21,7 +30,13 @@ docker run -d \
 	--health-timeout=20s \
 	mysql:8.0
 
+echo ""
+echo -e "[ INFO ] Waiting for MySQL database container to become operational..."
+
 sleep 20
+
+echo ""
+echo -e "[ INFO ] Creating Liferay Portal container..."
 
 docker run \
 	--name testathon-liferay \
