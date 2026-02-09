@@ -1,15 +1,15 @@
 services:
-  liferay:
+  testathon-liferay:
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      database:
+      testathon-database:
         condition: service_healthy
     ports:
       - "8080:8080"
 
-  database:
+  testathon-database:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: lportal
