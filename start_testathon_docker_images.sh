@@ -1,4 +1,5 @@
 #!/bin/bash
+
 docker stop testathon-database
 docker stop testathon-liferay
 
