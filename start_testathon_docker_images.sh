@@ -12,7 +12,7 @@ docker network create testathon-network
 docker run -d \
 	--name testathon-database \
 	--network testathon-network \
-	-p 3306:3306 \
+	-p 3310:3306 \
 	-e MYSQL_ALLOW_EMPTY_PASSWORD="yes" \
 	-e MYSQL_DATABASE=lportal \
 	--health-cmd='mysqladmin ping -h localhost' \
