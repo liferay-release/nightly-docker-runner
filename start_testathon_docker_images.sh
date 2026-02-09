@@ -1,12 +1,12 @@
 #!/bin/bash
 
-docker stop testathon-database
-docker stop testathon-liferay
+docker stop testathon-database &> /dev/null
+docker stop testathon-liferay &> /dev/null
 
-docker rm testathon-database
-docker rm testathon-liferay
+docker rm testathon-database &> /dev/null
+docker rm testathon-liferay &> /dev/null
 
-docker network rm testathon-network
+docker network rm testathon-network &> /dev/null
 
 docker network create testathon-network
 
