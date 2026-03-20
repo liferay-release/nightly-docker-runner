@@ -42,4 +42,4 @@ docker run ^
 	--name testathon-liferay ^
 	--network testathon-network ^
 	-p 8080:8080 ^
-	liferay/release-candidates:testathon-2026.q1-phase-1-for-mysql
+	liferay/release-candidates:testathon-2026.q1-phase-2
