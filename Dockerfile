@@ -1,4 +1,4 @@
-FROM liferay/release-candidates:testathon-2026.q1-phase-2
+FROM liferay/dxp:7.4.13.nightly
 
 # Copy all config files placed on the folder configs/ to the Liferay Portal
 # bundle.
