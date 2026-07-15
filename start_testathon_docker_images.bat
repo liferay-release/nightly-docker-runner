@@ -33,7 +33,31 @@ docker run -d ^
 echo.
 echo [ INFO ] Waiting for MySQL database container to become operational...
 
-timeout /t 20 /nobreak >nul
+set /a attempt=0
+set /a max_attempts=60
+set /a timeout_seconds=%max_attempts%*2
+
+set get_health_status=docker inspect --format "{{.State.Health.Status}}" testathon-database
+
+:wait_for_healthy
+
+for /f %%i in ('%get_health_status%') do set "health=%%i"
+
+if "%health%"=="healthy" goto healthy
+
+set /a attempt+=1
+
+if %attempt% geq %max_attempts% (
+	echo.
+	echo [ ERROR ] MySQL database container did not become healthy after %timeout_seconds% seconds. Aborting.
+	exit /b 1
+)
+
+timeout /t 2 /nobreak >nul
+
+goto wait_for_healthy
+
+:healthy
 
 echo.
 echo [ INFO ] Creating Liferay Portal container...
@@ -41,5 +65,6 @@ echo [ INFO ] Creating Liferay Portal container...
 docker run ^
 	--name testathon-liferay ^
 	--network testathon-network ^
+	--platform linux/amd64 ^
 	-p 8080:8080 ^
 	liferay/release-candidates:testathon-2026.q1-phase-2
